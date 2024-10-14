@@ -15,29 +15,28 @@ redis_client = redis.Redis(
 # Function to fetch data from the Nobel Prize API
 def fetch_nobel_prizes():
     url = "http://api.nobelprize.org/v1/prize.json"
-    response = requests.get(url)
+    response = requests.get(url) #request fetches the content from url
     
     if response.status_code == 200:
-        return response.json()
+        return response.json() #request returns response object
     else:
         print("Failed to fetch data from the API")
         return None
     
+
 # Function to store data in Redis as JSON
 def store_prizes_in_redis(prizes):
     for i, prize in enumerate(prizes['prizes']):
         key = f"prizes:{i+1}"  # Creating a unique key for each prize
-        redis_client.json().set(key, '$', json.dumps(prize))  # Using Redis JSON command to store
-        
-        print(f"Stored {key} in Redis")
+        redis_client.json().set(key, '$', prize)  # Using Redis JSON command to store
+       
 
 # Main logic
 def main():
-    # Fetch the Nobel Prize data
-    prizes = fetch_nobel_prizes()
     
-    if prizes:
-        # Store the data in Redis
+    prizes = fetch_nobel_prizes() #Fetch and Store JSON object in 'prizes' variable
+    
+    if prizes: #prizes contains JSON object then executes
         store_prizes_in_redis(prizes)
         print("All data stored successfully!")
     else:
