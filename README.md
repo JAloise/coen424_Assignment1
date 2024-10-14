@@ -1,6 +1,6 @@
 # coen424_Assignment1
 
-##Task 1 Data Storage and Query on Redis
+## Task 1 Data Storage and Query on Redis
 ### Task 1.1
 - Load Data to Redis Cloud. Keys type are JSON
 
