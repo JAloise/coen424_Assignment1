@@ -11,3 +11,4 @@
 - BONUS: 
 
  ### Task 1.3
+- See query.py files
