@@ -52,8 +52,8 @@ def serve():
     # Start the gRPC server
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     prize_pb2_grpc.add_NobelPrizeServiceServicer_to_server(NobelPrizeServiceServicer(), server)
-    server.add_insecure_port('[::]:50051')
-    if server.add_insecure_port('[::]:50051') != 0:
+    port = server.add_insecure_port('[::]:50051')
+    if port != 0:
         print("gRPC server started on port 50051")
     else:
         print("Failed to start gRPC server.")
