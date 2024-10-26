@@ -12,3 +12,13 @@
 
  ### Task 1.3
 - See query.py files
+
+## Task 2 Data Model Design
+- Install gRPC: 
+  - ```python -m pip install grpcio```
+- Install gRPC tools: 
+  - ```python -m pip install grpcio-tools``` 
+
+- To run .proto file: 
+  - ```python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. prize.proto```
+
